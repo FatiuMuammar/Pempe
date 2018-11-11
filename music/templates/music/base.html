@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Pempe{% endblock %}</title>
+    <!--Load the path to static files-->
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}"/>
+    <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'music/js/main.js' %}"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+            <!--Logo-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'music:index' %}"> Pempe</a>
+            </div>
+            <!--Items-->
+            <div class="collapse navbar-collapse" id="topNavBar">
+                <ul class="nav navbar-nav">
+                    <li class="{% block albums_active %}{% endblock %}">
+                        <a href="{% url 'music:index' %}">
+                            <span aria-hidden="true"><i class="fas fa-compact-disc"></i></span> Albums
+                        </a>
+                    </li>
+                    <li class="{% block songs_active %}{% endblock %}">
+                        <a href="{% url 'music:songs' 'all' %}">
+                            <span aria-hidden="true"><i class="fas fa-music"></i></span> Songs
+                        </a>
+                    </li>
+                </ul>
+                <!--form-->
+                <form class="navbar-form navbar-left" method="get" action="#">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="q" value="{{ request.q }}">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                        <a href="{% url 'music:create_album' %}">
+                            <span aria-hidden="true"><i class="fas fa-plus-circle"></i></span> Add Albums
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'music:logout_user' %}">
+                            <span aria-hidden="true"><i class="fas fa-power-off"></i></span> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block body %}
+    {% endblock %}
+
+</body>
+</html>
