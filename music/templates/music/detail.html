@@ -24,7 +24,7 @@
                                             font-size: 30px;
                                             color: #000000">{{ album.album_title }}
                         <small>{{ album.genre }}</small></h1>
-                    <h2 style="font-family: italic;">{{ album.artist }}</h2>
+                    <h2 style="font-family: 'Courgette', cursive;">{{ album.artist }}</h2>
                 </div>
             </div>
         </div>
@@ -33,8 +33,8 @@
         <div class="col-sm-8 col-md-9">
 
             <ul class="nav nav-pills" style="margin-bottom: 10px;">
-                <li role="presentation" class="active"><a href="{% url 'music:detail' album.id %}">View All</a></li>
-                <li role="presentation"><a href="{% url 'music:create_song' album.id %}">Add New Song</a></li>
+                <li role="presentation" class="active"><a style="color: #000000;" href="{% url 'music:detail' album.id %}">View All</a></li>
+                <li role="presentation"><a style="color: #000000;" href="{% url 'music:create_song' album.id %}">Add New Song</a></li>
             </ul>
 
             <div class="panel panel-default">
