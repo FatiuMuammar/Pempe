@@ -1,4 +1,4 @@
-Django==1.9
+Django==1.9.3
 python==3.7
 Bootsrap==3.3.7
 HTML5
